@@ -29,6 +29,14 @@
     color: #00d2ff; /* A nice cyan blue to make your name pop slightly */
     text-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
 }
+        .creator-tag .name {
+    animation: glow 3s infinite ease-in-out;
+}
+
+@keyframes glow {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; text-shadow: 0 0 15px #00d2ff; }
+}
         :root {
             --ceutics-color: #4CAF50;
             --cology-color: #2196F3;
