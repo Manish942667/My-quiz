@@ -37,39 +37,6 @@
     0%, 100% { opacity: 0.6; }
     50% { opacity: 1; text-shadow: 0 0 15px #00d2ff; }
 }
-        .button-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Two buttons side-by-side */
-    gap: 15px;
-    padding: 20px;
-}
-
-.dash-btn {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 15px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: transform 0.2s, background 0.3s;
-    cursor: pointer;
-    color: white;
-}
-
-.dash-btn:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-
-.icon { font-size: 2rem; margin-bottom: 10px; }
-.text { font-weight: bold; font-size: 0.9rem; }
-
-/* Special colors for specific buttons */
-.practice { border-bottom: 4px solid #4CAF50; }
-.challenge { border-bottom: 4px solid #FF9800; }
         :root {
             --ceutics-color: #4CAF50;
             --cology-color: #2196F3;
@@ -153,34 +120,8 @@
 <body>
 
     <header>
-<div class="main-dashboard">
-    <div class="app-header">
-        <h1>Pharma Quiz Pro</h1>
-        <p>Master your curriculum, one question at a time.</p>
-    </div>
-
-    <div class="button-grid">
-        <button onclick="startQuiz('practice')" class="dash-btn practice">
-            <span class="icon">📖</span>
-            <span class="text">Practice Mode</span>
-        </button>
-
-        <button onclick="startQuiz('challenge')" class="dash-btn challenge">
-            <span class="icon">⚡</span>
-            <span class="text">Time Challenge</span>
-        </button>
-
-        <button onclick="showHighScores()" class="dash-btn scores">
-            <span class="icon">🏅</span>
-            <span class="text">My Achievements</span>
-        </button>
-
-        <button onclick="openCommunity()" class="dash-btn community">
-            <span class="icon">🤝</span>
-            <span class="text">Student Group</span>
-        </button>
-    </div>
-</div>
+        <h1>🎓 Pharmacy Learning Hub</h1>
+        <p>Select a subject to view your topic.</p>
     </header>
 
     <div id="subject-menu" class="menu-container">
