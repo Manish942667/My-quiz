@@ -3,109 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pharmacy Quiz</title>
+    <title>Pharmacy Quiz Pro</title>
     <link rel="manifest" href="manifest.json">
     <style>
+        :root {
+            --ceutics-color: #4CAF50;
+            --cology-color: #2196F3;
+            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
         body {
-            font-family: sans-serif;
-            background-color: #f0f2f5;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg-gradient);
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 20px;
             margin: 0;
+            color: #2d3436;
         }
-        h1 { color: #333; margin-bottom: 30px; text-align: center; }
-        .menu-container { width: 100%; max-width: 400px; display: grid; gap: 15px; }
-        
+
+        /* Improved Header Section */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin: 10px 0;
+            background: linear-gradient(to right, #2d3436, #636e72);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            font-size: 1rem;
+            color: #636e72;
+            line-height: 1.5;
+        }
+
+        .menu-container {
+            width: 100%;
+            max-width: 450px;
+            display: grid;
+            gap: 15px;
+        }
+
+        /* Aesthetic Quiz Cards */
         .quiz-card {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 22px;
+            border-radius: 15px;
             text-decoration: none;
-            color: #333;
-            font-weight: bold;
+            color: #2d3436;
+            font-weight: 600;
             font-size: 1.1rem;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             border: 2px solid transparent;
             cursor: pointer;
+            display: block;
         }
-        .quiz-card:active { transform: scale(0.95); background-color: #e9ecef; }
-        
-        /* Subject Colors */
-        .subject-ceutics { border-left: 8px solid #4CAF50; }
-        .subject-cology { border-left: 8px solid #2196F3; }
-        
+
+        .quiz-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .quiz-card:active {
+            transform: scale(0.96);
+        }
+
+        /* Specific Border Colors for Topics */
+        .ceutics-border { border: 2px solid var(--ceutics-color); border-left-width: 10px; }
+        .cology-border { border: 2px solid var(--cology-color); border-left-width: 10px; }
+
+        /* Subject Button Special Styles */
+        .subject-ceutics { background: #e8f5e9; border: 2px solid var(--ceutics-color); color: #2e7d32; }
+        .subject-cology { background: #e3f2fd; border: 2px solid var(--cology-color); color: #1565c0; }
+
         .back-btn {
-            margin-top: 20px;
-            background: #666;
+            margin-top: 30px;
+            background: #2d3436;
             color: white;
             border: none;
-            padding: 12px 25px;
-            border-radius: 8px;
+            padding: 14px 30px;
+            border-radius: 50px;
             font-weight: bold;
             cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: background 0.3s;
         }
+
+        .back-btn:hover { background: #000; }
+
+        .topic-group { display: grid; gap: 15px; width: 100%; }
     </style>
 </head>
 <body>
 
+    <header>
+        <h1>Pharmacy Learning Hub</h1>
+        <p class="subtitle">Select a subject below to view specific chapters. Each quiz is designed to test your core knowledge and prepare you for exams.</p>
+    </header>
+
     <div id="subject-menu" class="menu-container">
-        <h1>Select Subject</h1>
-        <div class="quiz-card subject-ceutics" onclick="showTopics('ceutics')">Pharmaceutics</div>
-        <div class="quiz-card subject-cology" onclick="showTopics('cology')">Pharmacology</div>
+        <div class="quiz-card subject-ceutics" onclick="showTopics('ceutics')">
+            <div style="font-size: 0.8rem; text-transform: uppercase; opacity: 0.7;">Subject</div>
+            Pharmaceutics
+        </div>
+        <div class="quiz-card subject-cology" onclick="showTopics('cology')">
+            <div style="font-size: 0.8rem; text-transform: uppercase; opacity: 0.7;">Subject</div>
+            Pharmacology
+        </div>
     </div>
 
     <div id="topic-menu" class="menu-container" style="display: none;">
-        <h1 id="topic-title">Select Topic</h1>
+        <h2 id="topic-title" style="text-align: center; color: #2d3436;">Topics</h2>
         
         <div id="ceutics-list" class="topic-group" style="display: none;">
-            <a href="history of pharmacy.html" class="quiz-card">History & Pharmacopeia</a>
-            <a href="packaging material.html" class="quiz-card">Packaging material</a>
-            <a href="tablets.html" class="quiz-card">Tablets</a>
-            <a href="capsule.html" class="quiz-card">Capsules</a>
-            <a href="size reduction.html" class="quiz-card">Size reduction</a>
+            <a href="history of pharmacy.html" class="quiz-card ceutics-border">History & Pharmacopeia</a>
+            <a href="packaging material.html" class="quiz-card ceutics-border">Packaging Material</a>
+            <a href="tablets.html" class="quiz-card ceutics-border">Tablets Technology</a>
+            <a href="capsule.html" class="quiz-card ceutics-border">Capsule Formulation</a>
+            <a href="size reduction.html" class="quiz-card ceutics-border">Size Reduction Units</a>
         </div>
 
         <div id="cology-list" class="topic-group" style="display: none;">
-            <a href="route of administration.html" class="quiz-card">Route of administration</a>
-            <a href="Pharmacokinetics & dynamic , AD, clinical trial.html" class="quiz-card">Kinetics, Dynamics & Trials</a>
-            <a href="Cholinergic & Anticholinergic drugs.html" class="quiz-card">Cholinergic Drugs</a>
-            <a href="Adrenergic & Antiadrenergic drugs.html" class="quiz-card">Adrenergic Drugs</a>
+            <a href="route of administration.html" class="quiz-card cology-border">Routes of Administration</a>
+            <a href="Pharmacokinetics & dynamic , AD, clinical trial.html" class="quiz-card cology-border">Kinetics & Clinical Trials</a>
+            <a href="Cholinergic & Anticholinergic drugs.html" class="quiz-card cology-border">ANS: Cholinergic System</a>
+            <a href="Adrenergic & Antiadrenergic drugs.html" class="quiz-card cology-border">ANS: Adrenergic System</a>
         </div>
 
-        <button class="back-btn" onclick="goBack()">← Back to Subjects</button>
+        <button class="back-btn" onclick="goBack()">← Switch Subject</button>
     </div>
 
     <script>
         function showTopics(subject) {
-            // Hide the Subject screen
             document.getElementById('subject-menu').style.display = 'none';
-            // Show the Topic screen
             document.getElementById('topic-menu').style.display = 'grid';
             
-            // Hide all lists first
             document.getElementById('ceutics-list').style.display = 'none';
             document.getElementById('cology-list').style.display = 'none';
             
-            // Show the one we clicked
             if(subject === 'ceutics') {
-                document.getElementById('topic-title').innerText = "Pharmaceutics Topics";
+                document.getElementById('topic-title').innerText = "Pharmaceutics Chapters";
                 document.getElementById('ceutics-list').style.display = 'grid';
             } else {
-                document.getElementById('topic-title').innerText = "Pharmacology Topics";
+                document.getElementById('topic-title').innerText = "Pharmacology Chapters";
                 document.getElementById('cology-list').style.display = 'grid';
             }
+            window.scrollTo(0,0);
         }
 
         function goBack() {
             document.getElementById('subject-menu').style.display = 'grid';
             document.getElementById('topic-menu').style.display = 'none';
+            window.scrollTo(0,0);
         }
 
-        // Register Service Worker
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('sw.js');
         }
