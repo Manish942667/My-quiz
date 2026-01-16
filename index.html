@@ -429,12 +429,23 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function closeFact() {
-    // This targets ONLY the popup and leaves the Navigation Bar alone
     const popup = document.getElementById('fact-overlay');
+    const music = document.getElementById('bg-music');
+
     if (popup) {
+        // 1. Hide the popup
         popup.style.display = 'none';
+        
+        // 2. Start the music at low volume (0.2 is best for study)
+        music.volume = 0.2; 
+        
+        // 3. Play the music
+        music.play().catch(error => {
+            console.log("Browser blocked auto-play. Music will start on next tap.");
+        });
     }
 }
+
     </script>
     <div id="fact-overlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(2, 6, 23, 0.95); z-index:10000; justify-content:center; align-items:center; backdrop-filter:blur(10px); display: flex;">
     <div style="background:rgba(30, 41, 59, 0.9); width:85%; max-width:400px; padding:35px; border-radius:24px; border:1px solid #fbbf24; text-align:center; box-shadow:0 0 40px rgba(251, 191, 36, 0.2); animation: fadeIn 0.6s ease;">
@@ -465,5 +476,10 @@ function closeFact() {
             
 </nav>
 <div style="height: 90px;"></div>
+    
+    <audio id="bg-music" loop>
+    <source src="https://p.scdn.co/mp3-preview/6520379963e634731a5471699e173e13e2d6b38c?cid=774b75d563004772a4985a3646738c64" type="audio/mpeg">
+    </audio>
+    
 </body>
 </html>
