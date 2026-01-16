@@ -415,7 +415,11 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function closeFact() {
-    document.getElementById('fact-overlay').style.display = 'none';
+    // This targets ONLY the popup and leaves the Navigation Bar alone
+    const popup = document.getElementById('fact-overlay');
+    if (popup) {
+        popup.style.display = 'none';
+    }
 }
     </script>
     <div id="fact-overlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(2, 6, 23, 0.95); z-index:10000; justify-content:center; align-items:center; backdrop-filter:blur(10px); display: flex;">
