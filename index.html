@@ -6,6 +6,29 @@
     <title>Pharmacy Quiz Pro</title>
     <link rel="manifest" href="manifest.json">
     <style>
+        .creator-tag {
+    position: fixed;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    left: 0;
+    pointer-events: none; /* Keeps it from blocking buttons */
+}
+
+.creator-tag p {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size: 10px; /* Small letters as requested */
+    letter-spacing: 2px; /* Adds a premium "brand" feel */
+    text-transform: lowercase; /* Forces small letters */
+    color: rgba(255, 255, 255, 0.5); /* Subtle white (elegant) */
+    margin: 0;
+}
+
+.creator-tag .name {
+    font-weight: 700;
+    color: #00d2ff; /* A nice cyan blue to make your name pop slightly */
+    text-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+}
         :root {
             --ceutics-color: #4CAF50;
             --cology-color: #2196F3;
@@ -182,7 +205,7 @@
         }
     </script>
     <footer class="creator-tag">
-    <p>created by <span class="name">manish gupta</span></p>
+    <p>Created by <span class="name">Manish Gupta</span></p>
 </footer>
 </body>
 </html>
