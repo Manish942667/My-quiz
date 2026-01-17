@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rx Aspirant | Competitive Pharmacy Prep</title>
+    <title>Rx Aspirant | Premium Pharmacy Prep</title>
     <style>
         :root {
             --bg-dark: #020617;
@@ -12,158 +12,153 @@
             --accent-blue: #38bdf8;
             --text-primary: #f8fafc;
             --text-dim: #94a3b8;
+            --live-red: #ef4444;
         }
 
         body {
             font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
             background-color: var(--bg-dark);
             background-image: 
-                radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.05) 0, transparent 50%),
-                radial-gradient(circle at 100% 100%, rgba(251, 191, 36, 0.05) 0, transparent 50%);
+                radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.08) 0, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(251, 191, 36, 0.08) 0, transparent 50%);
             color: var(--text-primary);
             margin: 0;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
+            padding-bottom: 160px; /* Space for creator and nav */
         }
 
-        header { text-align: center; padding: 40px 20px 10px; }
+        /* --- GLOWING HEADER EFFECTS --- */
+        header { text-align: center; padding: 40px 20px 10px; width: 100%; }
         
         .logo-text {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 900;
             margin: 0;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             color: var(--accent-gold);
-            text-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+            text-shadow: 0 0 15px rgba(251, 191, 36, 0.6);
+            animation: titleGlow 3s infinite alternate;
         }
 
-        .logo-text span {
-            background: linear-gradient(to bottom, #fff, #cbd5e1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        @keyframes titleGlow {
+            from { text-shadow: 0 0 10px rgba(251, 191, 36, 0.4); }
+            to { text-shadow: 0 0 25px rgba(251, 191, 36, 0.8), 0 0 40px rgba(251, 191, 36, 0.2); }
         }
 
-        #music-status {
-            display: inline-block;
-            background: rgba(251, 191, 36, 0.1);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.65rem;
-            border: 1px solid rgba(251, 191, 36, 0.3);
-            cursor: pointer;
-            color: var(--accent-gold);
-            margin-top: 15px;
+        .live-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(239, 68, 68, 0.15);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            color: var(--live-red);
             font-weight: 800;
-            letter-spacing: 1px;
+            margin-top: 10px;
+            border: 1px solid rgba(239, 68, 68, 0.3);
         }
 
-        /* Dashboard Grid */
-        .dashboard-main {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            width: 90%;
-            max-width: 500px;
-            margin-top: 20px;
+        .dot {
+            height: 8px;
+            width: 8px;
+            background-color: var(--live-red);
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse 1.5s infinite;
         }
 
-        .main-btn {
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255,255,255,0.1);
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+
+        /* --- SEARCH BAR --- */
+        .search-container { width: 90%; max-width: 450px; margin: 25px auto; position: relative; }
+        #chapterSearch {
+            width: 100%; padding: 16px 20px 16px 50px; border-radius: 15px;
+            border: 1px solid rgba(251, 191, 36, 0.2); background: rgba(30, 41, 59, 0.5);
+            color: white; outline: none; transition: 0.3s;
+        }
+        #chapterSearch:focus { border-color: var(--accent-gold); box-shadow: 0 0 20px rgba(251, 191, 36, 0.15); }
+
+        /* --- CREATOR SECTION --- */
+        .creator-card {
+            margin-top: 40px;
             padding: 20px;
-            border-radius: 16px;
-            cursor: pointer;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 15px;
+            width: 85%;
+            max-width: 400px;
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.4), rgba(15, 23, 42, 0.6));
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            backdrop-filter: blur(10px);
         }
 
-        .main-btn:hover {
-            border-color: var(--accent-gold);
-            transform: translateY(-3px);
-            background: rgba(30, 41, 59, 0.9);
-        }
-
-        .icon-box { font-size: 1.5rem; width: 50px; height: 50px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; border-radius: 10px; }
-
-        /* Lists and Menus */
-        .sub-menu {
-            display: none;
-            width: 95%;
-            max-width: 500px;
-            flex-direction: column;
-            gap: 10px;
-            animation: fadeIn 0.4s ease;
-        }
-
-        .list-item {
-            background: var(--card-bg);
-            padding: 16px 20px;
-            border-radius: 12px;
-            text-decoration: none;
-            color: var(--text-primary);
-            border-left: 4px solid var(--accent-blue);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: 0.2s;
-            font-size: 0.95rem;
-        }
-
-        .list-item:hover {
-            background: #1e293b;
-            border-left-color: var(--accent-gold);
-        }
-
-        .controls { margin: 30px 0; display: none; }
-        .back-home {
-            background: transparent;
-            color: var(--accent-gold);
-            border: 1px solid var(--accent-gold);
+        .insta-btn {
+            display: inline-block;
+            margin-top: 10px;
             padding: 10px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 15px rgba(220, 39, 67, 0.4);
+            transition: 0.3s;
         }
+        .insta-btn:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(220, 39, 67, 0.6); }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        /* UI Elements */
+        .dashboard-main { display: grid; gap: 15px; width: 90%; max-width: 500px; }
+        .main-btn { 
+            background: var(--card-bg); padding: 20px; border-radius: 16px; cursor: pointer; 
+            display: flex; align-items: center; gap: 15px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s;
+        }
+        .main-btn:hover { border-color: var(--accent-gold); transform: translateY(-3px); }
+        .sub-menu { display: none; width: 95%; max-width: 500px; flex-direction: column; gap: 10px; }
+        .list-item { 
+            background: var(--card-bg); padding: 18px; border-radius: 12px; text-decoration: none; 
+            color: white; border-left: 4px solid var(--accent-blue); display: flex; justify-content: space-between;
+        }
+        .controls { margin: 20px 0; display: none; }
+        .back-home { background: none; color: var(--accent-gold); border: 1px solid var(--accent-gold); padding: 10px 20px; border-radius: 8px; cursor: pointer; }
     </style>
 </head>
 <body>
 
     <header>
+        <div class="live-indicator"><span class="dot"></span> LIVE SYSTEM ACTIVE</div>
         <h1 class="logo-text">Rx <span>ASPIRANT</span></h1>
-        <p id="dynamic-subtitle" style="color: var(--accent-gold); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-top: 5px;">
-            Competitive Exam Intelligence
-        </p>
-        <div onclick="toggleMusic()" id="music-status">🎵 FOCUS: ON</div>
+        <div class="search-container">
+            <span style="position:absolute; left:20px; top:18px; opacity:0.5;">🔍</span>
+            <input type="text" id="chapterSearch" onkeyup="filterChapters()" placeholder="Search drug classes, chapters...">
+        </div>
     </header>
 
     <div id="home-menu" class="dashboard-main">
-        <div class="main-btn" onclick="showSection('subject-menu', 'Select Subject')">
-            <div class="icon-box">📚</div>
-            <div>
-                <h3 style="margin:0">Subject Quiz</h3>
-                <p style="margin:4px 0 0; font-size:0.75rem; color:var(--text-dim)">Practice chapter-wise</p>
-            </div>
+        <div class="main-btn" onclick="showSection('subject-menu', 'Pharmacology & More')">
+            <div style="font-size:1.5rem">📚</div>
+            <div><h3 style="margin:0">Subject Quizzes</h3><p style="margin:0;font-size:0.7rem;color:var(--text-dim)">Chapter-wise specialized learning</p></div>
         </div>
-        <div class="main-btn" onclick="showSection('mock-menu', 'Grand Mock Series')">
-            <div class="icon-box">🏆</div>
-            <div>
-                <h3 style="margin:0">Mock Test Series</h3>
-                <p style="margin:4px 0 0; font-size:0.75rem; color:var(--text-dim)">Time-bound exam practice</p>
-            </div>
+        <div class="main-btn" onclick="showSection('mock-menu', 'Grand Mock Tests')">
+            <div style="font-size:1.5rem">🏆</div>
+            <div><h3 style="margin:0">Mock Series</h3><p style="margin:0;font-size:0.7rem;color:var(--text-dim)">Simulate real exam environment</p></div>
         </div>
-        <div class="main-btn" onclick="showSection('pyp-menu', 'Previous Papers')">
-            <div class="icon-box">📄</div>
-            <div>
-                <h3 style="margin:0">PYP's</h3>
-                <p style="margin:4px 0 0; font-size:0.75rem; color:var(--text-dim)">Previous year collections</p>
-            </div>
+        <div class="main-btn" onclick="showSection('pyp-menu', 'Previous Year Papers')">
+            <div style="font-size:1.5rem">📄</div>
+            <div><h3 style="margin:0">PYP Archives</h3><p style="margin:0;font-size:0.7rem;color:var(--text-dim)">Official papers from 2018-2025</p></div>
+        </div>
+
+        <div class="creator-card">
+            <p style="margin:0; font-size:0.7rem; color:var(--accent-gold); font-weight:800; letter-spacing:1px;">STUDY PARTNER</p>
+            <h4 style="margin:5px 0; font-size:1.1rem;">Follow for Daily MCQ's</h4>
+            <a href="https://instagram.com/your_id" class="insta-btn">📸 INSTAGRAM @Rx_Aspirant</a>
         </div>
     </div>
 
@@ -186,142 +181,82 @@
             <a href="size reduction.html" class="list-item">Size Reduction</a>
             <a href="Size separation.html" class="list-item">Size Separation</a>
         </div>
-
         <div id="cology-list" class="ch-group" style="display:none">
             <a href="route of administration.html" class="list-item">Routes of Administration</a>
             <a href="Pharmacokinetics & dynamic , AD, clinical trial.html" class="list-item">Kinetics & Clinical Trials</a>
             <a href="Cholinergic & Anticholinergic drugs.html" class="list-item">ANS: Cholinergic System</a>
             <a href="Adrenergic & Antiadrenergic drugs.html" class="list-item">ANS: Adrenergic System</a>
         </div>
-
         <div id="cogno-list" class="ch-group" style="display:none">
             <a href="Definition, History & Scope of Pharmacognosy.html" class="list-item">Definition & History</a>
             <a href="cogno-b.html" class="list-item">Phytochemistry Intro</a>
             <a href="cogno-c.html" class="list-item">Classification of Drugs</a>
         </div>
-
         <div id="hap-list" class="ch-group" style="display:none">
             <a href="haemopoietic system.html" class="list-item">Haemopoietic system</a>
             <a href="respiratory system.html" class="list-item">Respiratory system</a>
             <a href="reproductive system.html" class="list-item">Reproductive system</a>
         </div>
-
         <div id="biochem-list" class="ch-group" style="display:none">
-             <a href="introduction of biochemistry.html" class="list-item">Introduction of biochemistry</a>
+            <a href="introduction of biochemistry.html" class="list-item">Introduction of biochemistry</a>
             <a href="biochem-b.html" class="list-item">Proteins & Amino Acids</a>
         </div>
-
         <div id="chem-list" class="ch-group" style="display:none">
             <a href="chem-a.html" class="list-item">Impurities in Pharmaceutics</a>
             <a href="chem-b.html" class="list-item">Gastrointestinal Agents</a>
         </div>
-
         <div id="community-list" class="ch-group" style="display:none">
             <a href="community-a.html" class="list-item">Prescription Handling</a>
             <a href="community-b.html" class="list-item">Inventory Control</a>
         </div>
     </div>
 
-    <div id="mock-menu" class="sub-menu">
-        <a href="mock-a.html" class="list-item">COMING SOON <span>Start</span></a>
-    </div>
-    <div id="pyp-menu" class="sub-menu">
-        <a href="pyp-a.html" class="list-item">COMING SOON <span>Open</span></a>
-    </div>
+    <div id="mock-menu" class="sub-menu"><a href="#" class="list-item">Full Length Mock 1 <span>Start</span></a></div>
+    <div id="pyp-menu" class="sub-menu"><a href="#" class="list-item">GPAT 2024 Paper <span>PDF</span></a></div>
 
-    <div class="controls" id="controls">
-        <button class="back-home" onclick="goHome()">← Back to Dashboard</button>
-    </div>
+    <div class="controls" id="controls"><button class="back-home" onclick="goHome()">← Back Home</button></div>
 
-    <div id="fact-overlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(2, 6, 23, 0.98); z-index:10000; display: flex; justify-content:center; align-items:center; backdrop-filter:blur(10px);">
-        <div style="background:rgba(30, 41, 59, 0.9); width:85%; max-width:400px; padding:35px; border-radius:24px; border:1px solid #fbbf24; text-align:center; box-shadow:0 0 40px rgba(251, 191, 36, 0.2);">
-            <div style="font-size:2.5rem; margin-bottom:15px;">💡</div>
-            <h2 style="color:#fbbf24; margin:0; font-size:1.3rem; letter-spacing:2px; font-weight:800;">DAILY INSIGHT</h2>
-            <div style="height:1px; background:linear-gradient(90deg, transparent, #fbbf24, transparent); margin:20px 0;"></div>
-            <p id="fact-text" style="color:#f8fafc; line-height:1.6; font-size:1rem; font-style: italic;">"Loading expert insight..."</p>
-            <button onclick="closeFact()" style="margin-top:25px; background:#fbbf24; color:#020617; border:none; padding:16px; border-radius:12px; font-weight:800; cursor:pointer; width:100%; letter-spacing:1px;">ENTER DASHBOARD</button>
-        </div>
-    </div>
-
-    <nav style="position: fixed; bottom: 0; left: 0; width: 100%; height: 75px; background: rgba(15, 23, 42, 0.98); backdrop-filter: blur(10px); border-top: 1px solid rgba(251, 191, 36, 0.3); display: flex; justify-content: space-around; align-items: center; z-index: 9998; padding-bottom: 5px;">
-        <div onclick="goHome()" style="display: flex; flex-direction: column; align-items: center; cursor: pointer;">
-            <span style="font-size: 1.5rem;">🏠</span>
-            <span style="font-size: 0.65rem; font-weight: 700; color: #fbbf24; margin-top: 4px; letter-spacing: 1px;">HOME</span>
-        </div>
-        <div onclick="showSection('subject-menu', 'Select Subject')" style="display: flex; flex-direction: column; align-items: center; cursor: pointer; opacity: 0.7;">
-            <span style="font-size: 1.5rem;">📚</span>
-            <span style="font-size: 0.65rem; font-weight: 700; color: #fff; margin-top: 4px; letter-spacing: 1px;">LEARN</span>
-        </div>
-        <div onclick="showSection('mock-menu', 'Grand Mock Series')" style="display: flex; flex-direction: column; align-items: center; cursor: pointer; opacity: 0.7;">
-            <span style="font-size: 1.5rem;">🏆</span>
-            <span style="font-size: 0.65rem; font-weight: 700; color: #fff; margin-top: 4px; letter-spacing: 1px;">MOCK</span>
-        </div>
+    <nav style="position: fixed; bottom: 0; left: 0; width: 100%; height: 75px; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(15px); border-top: 1px solid rgba(251, 191, 36, 0.2); display: flex; justify-content: space-around; align-items: center; z-index: 999;">
+        <div onclick="goHome()" style="text-align:center; cursor:pointer;"><div style="font-size:1.4rem">🏠</div><div style="font-size:0.6rem; color:var(--accent-gold); font-weight:800;">HOME</div></div>
+        <div onclick="showSection('subject-menu', 'Subjects')" style="text-align:center; cursor:pointer;"><div style="font-size:1.4rem">📚</div><div style="font-size:0.6rem; font-weight:800;">LEARN</div></div>
     </nav>
 
-    <audio id="bg-music" loop>
-        <source src="https://p.scdn.co/mp3-preview/6520379963e634731a5471699e173e13e2d6b38c?cid=774b75d563004772a4985a3646738c64" type="audio/mpeg">
-    </audio>
-
     <script>
-        const pharmaFacts = [
-            "Aspirin was originally derived from the bark of a willow tree.",
-            "The 'Rx' symbol is believed to be an abbreviation of the Latin word 'Recipe'.",
-            "Penicillin was discovered by accident from mold in 1928.",
-            "Pharmacists were originally called 'Apothecaries'.",
-            "Insulin was the first ever drug produced using biotechnology."
-        ];
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const randomFact = pharmaFacts[Math.floor(Math.random() * pharmaFacts.length)];
-            document.getElementById('fact-text').innerText = randomFact;
-        });
-
-        function closeFact() {
-            document.getElementById('fact-overlay').style.display = 'none';
-            const music = document.getElementById('bg-music');
-            music.volume = 0;
-            music.play().then(() => {
-                let fadeIn = setInterval(() => {
-                    if (music.volume < 0.2) { music.volume += 0.02; } 
-                    else { clearInterval(fadeIn); }
-                }, 100);
-            }).catch(e => console.log("Music blocked"));
-        }
-
-        function toggleMusic() {
-            const music = document.getElementById('bg-music');
-            const status = document.getElementById('music-status');
-            if (music.paused) {
-                music.play();
-                status.innerText = "🎵 FOCUS: ON";
-            } else {
-                music.pause();
-                status.innerText = "🔇 FOCUS: OFF";
-            }
+        function filterChapters() {
+            let val = document.getElementById('chapterSearch').value.toLowerCase();
+            let home = document.getElementById('home-menu');
+            let chMenu = document.getElementById('chapter-menu');
+            if (val.length > 0) {
+                home.style.display = 'none';
+                document.querySelectorAll('.sub-menu').forEach(m => m.style.display = 'none');
+                chMenu.style.display = 'flex';
+                document.getElementById('controls').style.display = 'block';
+                document.querySelectorAll('.ch-group').forEach(g => g.style.display = 'block');
+                document.querySelectorAll('.list-item').forEach(item => {
+                    item.style.display = item.innerText.toLowerCase().includes(val) ? 'flex' : 'none';
+                });
+            } else { goHome(); }
         }
 
         function showSection(id, title) {
             document.getElementById('home-menu').style.display = 'none';
             document.querySelectorAll('.sub-menu').forEach(m => m.style.display = 'none');
-            const target = document.getElementById(id);
-            target.style.display = 'flex';
+            document.getElementById(id).style.display = 'flex';
             document.getElementById('controls').style.display = 'block';
-            document.getElementById('dynamic-subtitle').innerText = title;
-            window.scrollTo(0,0);
         }
 
         function openChapters(subject) {
-            showSection('chapter-menu', subject.toUpperCase() + ' CHAPTERS');
+            showSection('chapter-menu', '');
             document.querySelectorAll('.ch-group').forEach(g => g.style.display = 'none');
-            const activeGroup = document.getElementById(subject + '-list');
-            if(activeGroup) activeGroup.style.display = 'block';
+            document.getElementById(subject + '-list').style.display = 'block';
+            document.getElementById(subject + '-list').querySelectorAll('.list-item').forEach(i => i.style.display = 'flex');
         }
 
         function goHome() {
+            document.getElementById('chapterSearch').value = "";
             document.querySelectorAll('.sub-menu').forEach(m => m.style.display = 'none');
             document.getElementById('home-menu').style.display = 'grid';
             document.getElementById('controls').style.display = 'none';
-            document.getElementById('dynamic-subtitle').innerText = "Competitive Exam Intelligence";
         }
     </script>
 </body>
