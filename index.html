@@ -295,5 +295,48 @@
       .catch(err => console.log("Service Worker Failed", err));
   }
     </script>
+    
+    <button id="subscribe-btn" style="margin:20px; padding:12px; background:#2196F3; color:white; border:none; border-radius:8px;">
+  🔔 Subscribe to Exam Alerts
+</button>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
+  import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-messaging.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyD45MzRXxn6PTn5yszQi_xlc0kO-FukHoI",
+    authDomain: "rx-aspirant.firebaseapp.com",
+    projectId: "rx-aspirant",
+    storageBucket: "rx-aspirant.firebasestorage.app",
+    messagingSenderId: "1007411370077",
+    appId: "1:1007411370077:web:da559e45fd2a6a032b15b4"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const messaging = getMessaging(app);
+
+  const btn = document.getElementById('subscribe-btn');
+
+  btn.addEventListener('click', async () => {
+    const permission = await Notification.requestPermission();
+    if (permission === 'granted') {
+      try {
+        const token = await getToken(messaging, { 
+          vapidKey: 'BHUbiTR9I6DtPlyPWsSSh-WQbNRee1JmaxHqkcli8VDySPLtoGQkIYVu1f976nnuboqy5KtjOOTkuaUWItALlhQ' 
+        });
+        if (token) {
+          console.log("Device Token:", token);
+          alert("Subscribed successfully!");
+          // In a real app, you would save this 'token' to a database here
+        }
+      } catch (err) {
+        console.error("Token error:", err);
+      }
+    } else {
+      alert("Please allow notifications to receive alerts.");
+    }
+  });
+</script>
 </body>
 </html>
