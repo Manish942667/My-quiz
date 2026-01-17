@@ -32,8 +32,8 @@
     },
     {
       "src": "screenshot-wide.png",
-      "sizes": "1920x1080",
-      "type": "image/png",
+      "sizes": "1280x728",
+      "type": "image/jpeg",
       "form_factor": "wide",
       "label": "Dashboard View"
     }
