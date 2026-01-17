@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Rx Aspirant | Premium Pharmacy Prep</title>
     
@@ -10,6 +10,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#020617">
 
+    <style>
         :root {
             --bg-dark: #020617;
             --card-bg: rgba(30, 41, 59, 0.7);
@@ -33,15 +34,24 @@
             flex-direction: column;
             align-items: center;
             padding-bottom: 120px;
+            /* APP INTERACTION SETTINGS */
+            overscroll-behavior-y: contain;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
         }
-/* --- APP INTERACTION SETTINGS --- */
-            overscroll-behavior-y: contain; /* Prevents browser pull-to-refresh */
-            -webkit-tap-highlight-color: transparent; /* Removes blue box on click */
-            user-select: none; /* Prevents accidental text selection */
-        }
+
         header { text-align: center; padding: 40px 20px 10px; width: 100%; box-sizing: border-box; }
         
-        /* --- GLOWING TITLE --- */
+        /* LOGO STYLING */
+        .app-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            border: 2px solid var(--accent-gold);
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+        }
+
         .logo-text {
             font-size: 2.5rem;
             font-weight: 900;
@@ -91,7 +101,6 @@
             100% { opacity: 1; transform: scale(1); }
         }
 
-        /* --- SEARCH BAR --- */
         .search-container { width: 90%; max-width: 450px; margin: 20px auto 10px; position: relative; }
         #chapterSearch {
             width: 100%; padding: 14px 20px 14px 45px; border-radius: 12px;
@@ -99,7 +108,6 @@
             color: white; outline: none; transition: 0.3s; box-sizing: border-box;
         }
 
-        /* Dashboard Grid */
         .dashboard-main { display: grid; grid-template-columns: 1fr; gap: 15px; width: 90%; max-width: 500px; margin-top: 20px; }
         .main-btn {
             background: var(--card-bg); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1);
@@ -108,44 +116,23 @@
         .main-btn:hover { border-color: var(--accent-gold); transform: translateY(-3px); background: rgba(30, 41, 59, 0.9); }
         .icon-box { font-size: 1.5rem; width: 50px; height: 50px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; border-radius: 10px; }
 
-        /* Menus */
         .sub-menu { display: none; width: 95%; max-width: 500px; flex-direction: column; gap: 10px; animation: fadeIn 0.4s ease; }
         .list-item {
             background: var(--card-bg); padding: 16px 20px; border-radius: 12px; text-decoration: none;
             color: var(--text-primary); border-left: 4px solid var(--accent-blue); display: flex;
-            justify-content: space-between; align-items: center; transition: 0.2s;
+            justify-content: space-between; align-items: center; transition: 0.2s; margin-bottom: 5px;
         }
         
-        /* --- CLICKABLE BOTTOM SIGNATURE --- */
         .creator-tag {
-            margin-top: auto;
-            padding: 25px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--text-dim);
-            letter-spacing: 1px;
-            text-align: center;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: 0.3s;
+            margin-top: auto; padding: 25px; font-size: 0.75rem; font-weight: 700; color: var(--text-dim);
+            text-decoration: none; display: flex; align-items: center; gap: 8px;
         }
-        .creator-name {
-            color: var(--accent-gold);
-            text-shadow: 0 0 8px rgba(251, 191, 36, 0.5);
-            animation: textPulse 2s infinite ease-in-out;
-            position: relative;
-        }
-        .ig-icon {
-            width: 14px;
-            height: 14px;
-            fill: var(--accent-gold);
-            filter: drop-shadow(0 0 5px rgba(251, 191, 36, 0.5));
-        }
+        .creator-name { color: var(--accent-gold); animation: textPulse 2s infinite ease-in-out; }
+        .ig-icon { width: 14px; height: 14px; fill: var(--accent-gold); }
+
         @keyframes textPulse {
             0%, 100% { opacity: 0.8; transform: scale(1); }
-            50% { opacity: 1; text-shadow: 0 0 15px rgba(251, 191, 36, 0.8); transform: scale(1.02); }
+            50% { opacity: 1; transform: scale(1.02); }
         }
 
         .controls { margin: 30px 0; display: none; }
@@ -158,6 +145,7 @@
 
     <header>
         <div class="live-tag"><span class="pulse-dot"></span> LIVE UPDATES</div>
+        <img src="icon.png" alt="Logo" class="app-logo">
         <h1 class="logo-text">Rx <span>ASPIRANT</span></h1>
         <div class="search-container">
             <span style="position:absolute; left:15px; top:13px; opacity:0.5;">🔍</span>
@@ -166,25 +154,25 @@
     </header>
 
     <div id="home-menu" class="dashboard-main">
-        <div class="main-btn" onclick="showSection('subject-menu', 'Select Subject')">
+        <div class="main-btn" onclick="showSection('subject-menu')">
             <div class="icon-box">📚</div>
             <div>
                 <h3 style="margin:0">Subject Quiz</h3>
                 <p style="margin:4px 0 0; font-size:0.75rem; color:var(--text-dim)">Practice chapter-wise</p>
             </div>
         </div>
-        <div class="main-btn" onclick="showSection('mock-menu', 'Grand Mock Series')">
+        <div class="main-btn" onclick="showSection('mock-menu')">
             <div class="icon-box">🏆</div>
             <div>
                 <h3 style="margin:0">Mock Test Series</h3>
                 <p style="margin:4px 0 0; font-size:0.75rem; color:var(--text-dim)">Time-bound exam practice</p>
             </div>
         </div>
-        <div class="main-btn" onclick="showSection('pyp-menu', 'Previous Papers')">
+        <div class="main-btn" onclick="showSection('pyp-menu')">
             <div class="icon-box">📄</div>
             <div>
-                <h3 style="margin:0">Previous Year Question's</h3>
-                <p style="margin:4px 0 0; font-size:0.75rem; color:var(--text-dim)">Practice Previous year collections</p>
+                <h3 style="margin:0">PYP Archives</h3>
+                <p style="margin:4px 0 0; font-size:0.75rem; color:var(--text-dim)">Previous year collections</p>
             </div>
         </div>
     </div>
@@ -240,7 +228,7 @@
 
     <div id="mock-menu" class="sub-menu">
         <a href="mock-a.html" class="list-item">MOCK TEST 1 <span>Start</span></a>
-        <a href="#" class="list-item">UPCOMING MOCK 2 <span>Locked</span></a>
+        <a href="#" class="list-item" style="opacity:0.5">MOCK TEST 2 <span>Locked</span></a>
     </div>
     
     <div id="pyp-menu" class="sub-menu">
@@ -260,11 +248,11 @@
     <nav style="position: fixed; bottom: 0; left: 0; width: 100%; height: 75px; background: rgba(15, 23, 42, 0.98); backdrop-filter: blur(10px); border-top: 1px solid rgba(251, 191, 36, 0.3); display: flex; justify-content: space-around; align-items: center; z-index: 9998; padding-bottom: 5px;">
         <div onclick="goHome()" style="display: flex; flex-direction: column; align-items: center; cursor: pointer;">
             <span style="font-size: 1.5rem;">🏠</span>
-            <span style="font-size: 0.65rem; font-weight: 700; color: #fbbf24; margin-top: 4px; letter-spacing: 1px;">HOME</span>
+            <span style="font-size: 0.65rem; font-weight: 700; color: #fbbf24; margin-top: 4px;">HOME</span>
         </div>
-        <div onclick="showSection('mock-menu', 'Grand Mock Series')" style="display: flex; flex-direction: column; align-items: center; cursor: pointer; opacity: 0.7;">
+        <div onclick="showSection('mock-menu')" style="display: flex; flex-direction: column; align-items: center; cursor: pointer; opacity: 0.7;">
             <span style="font-size: 1.5rem;">🏆</span>
-            <span style="font-size: 0.65rem; font-weight: 700; color: #fff; margin-top: 4px; letter-spacing: 1px;">MOCK TEST</span>
+            <span style="font-size: 0.65rem; font-weight: 700; color: #fff; margin-top: 4px;">MOCKS</span>
         </div>
     </nav>
 
@@ -289,7 +277,7 @@
             } else { goHome(); }
         }
 
-        function showSection(id, title) {
+        function showSection(id) {
             document.getElementById('home-menu').style.display = 'none';
             document.querySelectorAll('.sub-menu').forEach(m => m.style.display = 'none');
             document.getElementById(id).style.display = 'flex';
@@ -298,7 +286,7 @@
         }
 
         function openChapters(subject) {
-            showSection('chapter-menu', '');
+            showSection('chapter-menu');
             document.querySelectorAll('.ch-group').forEach(g => g.style.display = 'none');
             const group = document.getElementById(subject + '-list');
             if(group) {
@@ -313,15 +301,14 @@
             document.getElementById('home-menu').style.display = 'grid';
             document.getElementById('controls').style.display = 'none';
         }
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                .then(reg => console.log('SW Registered'))
+                .catch(err => console.log('SW Failed', err));
+            });
+        }
     </script>
-  <script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('sw.js')
-        .then(reg => console.log('Service Worker Registered!'))
-        .catch(err => console.log('Service Worker Failed', err));
-    });
-  }
-</script>
 </body>
 </html>
