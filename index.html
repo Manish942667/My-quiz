@@ -107,24 +107,36 @@
             justify-content: space-between; align-items: center; transition: 0.2s;
         }
         
-        /* --- BOTTOM SIGNATURE --- */
+        /* --- CLICKABLE BOTTOM SIGNATURE --- */
         .creator-tag {
             margin-top: auto;
-            padding: 20px;
+            padding: 25px;
             font-size: 0.75rem;
             font-weight: 700;
             color: var(--text-dim);
             letter-spacing: 1px;
             text-align: center;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
         }
         .creator-name {
             color: var(--accent-gold);
             text-shadow: 0 0 8px rgba(251, 191, 36, 0.5);
             animation: textPulse 2s infinite ease-in-out;
+            position: relative;
+        }
+        .ig-icon {
+            width: 14px;
+            height: 14px;
+            fill: var(--accent-gold);
+            filter: drop-shadow(0 0 5px rgba(251, 191, 36, 0.5));
         }
         @keyframes textPulse {
-            0%, 100% { opacity: 0.8; }
-            50% { opacity: 1; text-shadow: 0 0 15px rgba(251, 191, 36, 0.8); }
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; text-shadow: 0 0 15px rgba(251, 191, 36, 0.8); transform: scale(1.02); }
         }
 
         .controls { margin: 30px 0; display: none; }
@@ -162,7 +174,7 @@
         <div class="main-btn" onclick="showSection('pyp-menu', 'Previous Papers')">
             <div class="icon-box">📄</div>
             <div>
-                <h3 style="margin:0">PYP Archives</h3>
+                <h3 style="margin:0">'Previous Year Papers</h3>
                 <p style="margin:4px 0 0; font-size:0.75rem; color:var(--text-dim)">Previous year collections</p>
             </div>
         </div>
@@ -230,10 +242,11 @@
         <button class="back-home" onclick="goHome()">← Back to Dashboard</button>
     </div>
 
-    <div class="creator-tag">
-        <span class="pulse-dot" style="display:inline-block; vertical-align:middle; margin-right:5px;"></span>
-        Created by <span class="creator-name">Manish Gupta</span>
-    </div>
+    <a href="https://www.instagram.com/manishgupta_739" class="creator-tag" target="_blank">
+        <span class="pulse-dot"></span>
+        <span>Created by <span class="creator-name">Manish Gupta</span></span>
+        <svg class="ig-icon" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.332 3.608 1.308.975.975 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.332 2.633-1.308 3.608-.975.975-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.332-3.608-1.308-.975-.975-1.246-2.242-1.308-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.332-2.633 1.308-3.608.975-.975 2.242-1.246 3.608-1.308 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c.796 0 1.441.645 1.441 1.44s-.645 1.44-1.441 1.44c-.795 0-1.439-.645-1.439-1.44s.644-1.44 1.439-1.44z"/></svg>
+    </a>
 
     <nav style="position: fixed; bottom: 0; left: 0; width: 100%; height: 75px; background: rgba(15, 23, 42, 0.98); backdrop-filter: blur(10px); border-top: 1px solid rgba(251, 191, 36, 0.3); display: flex; justify-content: space-around; align-items: center; z-index: 9998; padding-bottom: 5px;">
         <div onclick="goHome()" style="display: flex; flex-direction: column; align-items: center; cursor: pointer;">
