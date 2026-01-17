@@ -3,11 +3,22 @@
   "name": "Rx Aspirant Premium",
   "short_name": "Rx Aspirant",
   "description": "Premium Pharmacy Prep and Mock Series",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["education", "medical", "books"],
+  "iarc_rating_id": "",
   "start_url": "./index.html",
+  "scope": "./",
+  "scope_extensions": [
+    { "origin": "https://manishgupta739.github.io" }
+  ],
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "minimal-ui"],
   "background_color": "#020617",
   "theme_color": "#020617",
   "orientation": "portrait",
+  "prefer_related_applications": false,
+  "related_applications": [],
   "icons": [
     {
       "src": "icon.png",
@@ -22,7 +33,7 @@
       "purpose": "maskable"
     }
   ],
-"screenshots": [
+  "screenshots": [
     {
       "src": "screenshot-mobile.png",
       "sizes": "1080x1920",
